@@ -108,7 +108,7 @@ obtainInstruction("steak", 0)
   })
 
 
-.then ( (step9) => { 
+.finally (() => { 
   document.querySelector("#steak").innerHTML += `<li> Steak is ready! </li>`;
   return obtainInstruction (`steak`, 10)
   } ) ;
