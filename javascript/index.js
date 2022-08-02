@@ -107,15 +107,37 @@ obtainInstruction("steak", 0)
     return obtainInstruction(`steak`, 9);
   })
 
-
-.finally (() => { 
-  document.querySelector("#steak").innerHTML += `<li> Steak is ready! </li>`;
-  return obtainInstruction (`steak`, 10)
-  } ) ;
+  .finally(() => {
+    document.querySelector("#steak").innerHTML += `<li> Steak is ready! </li>`;
+    return obtainInstruction(`steak`, 10);
+  }); //cannot use 'then' bc there are no more lines in obtaininstruction that could be brought in here
 // ... Your code here
 
 // Iteration 3 using async/await
-// ...
+/*function obtainInstruction(step) {
+  return new Promise((resolve, reject) => {
+    console.log(instructions[step]);
+
+    if (!instructions[step]) reject("Instructions not found.");
+    else resolve();
+  });
+}*/
+
+async function makeBroccoli() {
+  try {
+    for (let i = 0; i < 7; ++i) { //in order to not repeat each step put it in a for loop
+      const step = await obtainInstruction("broccoli", i); //to add value of await inside 
+      document.querySelector("#broccoli").innerHTML += `<li>${step}</li>`;
+    
+    }
+    document.querySelector("#broccoli").innerHTML += `<li>Broccoli is ready!</li>`;
+
+  } catch (error) {
+    console.log("Something went wrong: ", error);
+  }
+}
+
+makeBroccoli();
 
 // Bonus 2 - Promise all
 // ...
